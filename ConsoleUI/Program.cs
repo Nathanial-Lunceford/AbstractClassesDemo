@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleUI;
 
 namespace ConsoleUI
 {
@@ -33,21 +34,50 @@ namespace ConsoleUI
 
             // Create a list of Vehicle called vehicles
 
+            List<Vehicle> vehicles = new List<Vehicle>();
+
+
+
             /*
              * Create 4 instances: 1 Car, 1 Motorcycle, and then 2 instances of type Vehicle (use explicit typing) but use constuctors from derived classes
              * - set them up as one of each derived class
              * Set the properties with object initializer syntax
              */
 
+            Car newCarOne = new Car(true, "2009", "Honda", "Accord");
+            Motorcycle newMotorOne = new Motorcycle(true, "2020", "Harley-Davidson", "Street Glide");
+
+            Vehicle newVehicleOne = new Car(false, "1998", "Chevrolet", "Pontiac");
+            Vehicle newVehicleTwo = new Motorcycle(false, "2015", "Yamaha", "Tracer 9");
+
             /*
              * Add the 4 vehicles to the list
              * Using a foreach loop iterate over each of the properties
              */
-
+            vehicles.Add(newCarOne);
+            vehicles.Add(newMotorOne);
+            vehicles.Add(newVehicleOne);
+            vehicles.Add(newVehicleTwo);
+            
+            foreach (Vehicle vehicle in vehicles)
+            {
+                Console.WriteLine($"Make: {vehicle.Make}, Model: {vehicle.Model}, Year: " +
+                    $"{vehicle.Year}");
+            }
             // Call each of the drive methods for one car and one motorcycle
 
-            #endregion            
-            Console.ReadLine();
+            Console.WriteLine($"Abstract and Virtual Drive for Car:");
+            newCarOne.DriveAbstract();
+            newCarOne.DriveVirtual();
+
+            Console.WriteLine();
+
+            Console.WriteLine($"Abstract and Virtual Drive for Motorcycles:");
+            newMotorOne.DriveAbstract();
+            newMotorOne.DriveVirtual();
+
+            #endregion
+
         }
     }
 }
